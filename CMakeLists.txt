@@ -5,7 +5,7 @@
 #  Created by kimbomm on 2018. 04. 01...
 #  Copyright 2018 Sogang CVIP. All rights reserved.
 #
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.15)
 project(YOLOv3_SpringEdition)
 
 find_package(CUDA QUIET REQUIRED)
@@ -19,6 +19,9 @@ LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_52,code=sm_52)    #for maxwell
 LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_60,code=sm_60)    #for pascal
 LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_61,code=sm_61)    #for pascal
 LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_62,code=sm_62)    #for jetson tx2
+LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_75,code=[sm_75,compute_75]) #for rtx
+LIST(APPEND CUDA_NVCC_FLAGS -gencode arch=compute_72,code=[sm_72,compute_72]) #for jetson xavier
+
 #https://developer.nvidia.com/cuda-gpus
 
 add_definitions(-DGPU)
