@@ -534,7 +534,7 @@ void rgbgr_image(image im)
     }
 }
 
-#ifdef OPENCV
+#ifdef OPENCV2
 void show_image_cv(image p, const char *name, IplImage *disp)
 {
     int x,y,k;
@@ -574,7 +574,7 @@ void show_image_cv(image p, const char *name, IplImage *disp)
 
 void show_image(image p, const char *name)
 {
-#ifdef OPENCV
+#ifdef OPENCV2
     IplImage *disp = cvCreateImage(cvSize(p.w,p.h), IPL_DEPTH_8U, p.c);
     image copy = copy_image(p);
     constrain_image(copy);
@@ -587,7 +587,7 @@ void show_image(image p, const char *name)
 #endif
 }
 
-#ifdef OPENCV
+#ifdef OPENCV2
 
 void ipl_into_image(IplImage* src, image im)
 {
@@ -712,7 +712,7 @@ void save_image_png(image im, const char *name)
 
 void save_image(image im, const char *name)
 {
-#ifdef OPENCV
+#ifdef OPENCV2
     save_image_jpg(im, name);
 #else
     save_image_png(im, name);
@@ -934,7 +934,7 @@ void composite_3d(char *f1, char *f2, char *out, int delta)
     for(i = 0; i < c.w*c.h; ++i){
         c.data[i] = a.data[i];
     }
-#ifdef OPENCV
+#ifdef OPENCV2
     save_image_jpg(c, out);
 #else
     save_image(c, out);
@@ -1412,7 +1412,7 @@ void test_resize(char *filename)
     show_image(c2, "C2");
     show_image(c3, "C3");
     show_image(c4, "C4");
-#ifdef OPENCV
+#ifdef OPENCV2
     while(1){
         image aug = random_augment_image(im, 0, .75, 320, 448, 320, 320);
         show_image(aug, "aug");
@@ -1465,7 +1465,7 @@ image load_image_stb(char *filename, int channels)
 
 image load_image(char *filename, int w, int h, int c)
 {
-#ifdef OPENCV
+#ifdef OPENCV2
     image out = load_image_cv(filename, c);
 #else
     image out = load_image_stb(filename, c);

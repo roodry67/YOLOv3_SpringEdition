@@ -11,7 +11,7 @@
 
 #define DEMO 1
 
-#ifdef OPENCV
+#ifdef OPENCV2
 
 static char **demo_names;
 static image **demo_alphabet;

@@ -10,7 +10,7 @@
 #include "darknet.h"
 
 #ifndef __cplusplus
-#ifdef OPENCV
+#ifdef OPENCV2
 int fill_image_from_stream(CvCapture *cap, image im);
 image ipl_to_image(IplImage* src);
 void ipl_into_image(IplImage* src, image im);
